@@ -1,0 +1,23 @@
+{
+  "name": "queue1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zcaldwell/queue1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zcaldwell/queue1/issues"
+  },
+  "homepage": "https://github.com/zcaldwell/queue1#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
