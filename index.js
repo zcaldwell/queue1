@@ -1,69 +1,62 @@
-class Stack {
-  constructor() {
-    this.items = [];
+const { add } = require("nodemon/lib/rules");
+
+class BinaryTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
   }
 
-  push(element) {
-    this.items.push(element);
-  }
-
-  pop() {
-    if (this.items.length == 0) return -1;
-    return this.items.pop();
-  }
-
-  peek() {
-    return this.items[this.items.length - 1];
-  }
-
-  get size() {
-    return this.items.length;
+  add(node) {
+    if (node.value < this.value) {
+      if (!this.left) this.left = node;
+      else this.left.add(node);
+    } else {
+      if (!this.right) this.right = node;
+      else this.right.add(node);
+    }
   }
 }
 
-const stack = new Stack();
-stack.push("fox");
-stack.push("goose");
-stack.push("lizard");
-console.log(stack.pop()); // 'lizard'
-console.log(stack.peek()); // 'goose'
-console.log(stack.pop()); // 'goose'
-stack.push("llama");
-console.log(stack.pop()); // 'llama'
-console.log(stack.peek()); // 'fox'
-console.log(stack.pop()); // 'fox'
-console.log(stack.pop()); // null
+const B = new BinaryTreeNode("B");
+const A = new BinaryTreeNode("A");
+const C = new BinaryTreeNode("C");
+const D = new BinaryTreeNode("D");
 
-class Queue {
-  #list = [];
-  #index = 0;
+B.add(A);
+B.add(D);
+B.add(C);
 
-  enqueue(item) {
-    this.#list.push(item);
-  }
+console.log(B);
 
-  dequeue() {
-    const item = this.#list[this.#index];
-    if (!this.hasNext()) return null;
-    this.#index++;
-    return item;
-  }
+class PersonTreeNode {
+    constructor(person) 
+      this.value = person.name;
+      this.person = person;
+      this.left = null;
+      this.right = null;
+    }
+  
+    add(node) {
+        if (node.value < this.value) {
+          if (!this.left) this.left = node;
+          else this.left.add(node);
+        } else {
+          if (!this.right) this.right = node;
+          else this.right.add(node);
+        }
+    
 
-  hasNext() {
-    return !!(this.#list.length - this.#index);
-  }
+    
+  
+    findPerson(name) {
+      if(this.value === name) return this.person;
+
+      const dir = node.value < this.value ? 'left' : 'right';
+      
+      if(this[dir]) return null;
+
+      return this[dir].findPerson(name);
+    }
 }
-
-const queue = new Queue();
-queue.enqueue("fox");
-queue.enqueue("goose");
-queue.enqueue("lizard");
-console.log(queue.dequeue()); // 'fox'
-console.log(queue.hasNext()); // true
-console.log(queue.dequeue()); // 'goose'
-queue.enqueue("llama");
-console.log(queue.dequeue()); // 'lizard'
-console.log(queue.hasNext()); // true
-console.log(queue.dequeue()); // 'llama'
-console.log(queue.hasNext()); // false
-console.log(queue.dequeue()); // null
+}
